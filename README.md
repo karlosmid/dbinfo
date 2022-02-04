@@ -4,6 +4,8 @@
 ![entities](entities.png)
 ![attributes](attributes.png)
 
+Inspired by [Vlado's gem.](https://github.com/vlado/rails_db_info)
+
 
 # Add dashboard access for development-only usage
 
