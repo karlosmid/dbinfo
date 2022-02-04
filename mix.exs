@@ -33,9 +33,9 @@ defmodule DbInfo.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ecto, git: "https://github.com/elixir-ecto/ecto"},
-      {:phoenix, git: "https://github.com/phoenixframework/phoenix"},
-      {:phoenix_html, git: "https://github.com/phoenixframework/phoenix_html", override: true},
+      {:ecto, "~> 3.7"},
+      {:phoenix, "~> 1.6"},
+      {:phoenix_html, "~> 3.2"},
       {:mock, "~> 0.3.0", only: :test},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false}
     ]
@@ -52,7 +52,7 @@ defmodule DbInfo.MixProject do
       files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["Karlo Šmid"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/karlosmid/exkeycdn"}
+      links: %{"GitHub" => "https://github.com/karlosmid/dbinfo"}
     ]
   end
 
