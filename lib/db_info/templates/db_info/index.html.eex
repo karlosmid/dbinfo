@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<table class="table is-narrow is-hoverable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Entries</th>
+<th>Schema</th>
+</tr>
+</thead>
+<%= for schema <- @schemas do %>
+    <%= schema = String.trim(to_string(schema), "Elixir.") %>
+    <tr>
+      <td><%= schema %></td>
+      <td><%= link("Entries", to: DbInfo.DbInfo.get_router_helpers.db_info_path(@conn, :show, schema, page: 0)) %></td>
+      <td><%= link("Schema", to: DbInfo.DbInfo.get_router_helpers.db_info_path(@conn, :attributes, schema)) %></td>
+    </tr>
+<% end %>
+</table>

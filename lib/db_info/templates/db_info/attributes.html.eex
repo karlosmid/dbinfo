@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<div class="content"><h1><%= @shema %></h1></div>
+<%= link("Entries", to: DbInfo.DbInfo.get_router_helpers.db_info_path(@conn, :show, @shema, page: 0), class: "pagination-previous") %>
+<table class="table is-bordered is-hoverable">
+<tr>
+  <th>name</th>
+  <th>type</th>
+</tr>
+<%= for data <- @entries do %>
+    <tr>
+      <td><%= elem(data, 0) %></td>
+      <td><%= elem(data, 1) %></td>
+    </tr>
+<% end %>
+</table>

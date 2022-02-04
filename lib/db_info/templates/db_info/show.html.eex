@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<div class="content"><h1><%= @shema %></h1></div>
+<%= link("<< Back to all tables", to: DbInfo.DbInfo.get_router_helpers.db_info_path(@conn, :home), class: "pagination-previous") %>
+<%= link("Schema", to: DbInfo.DbInfo.get_router_helpers.db_info_path(@conn, :attributes, @shema), class: "pagination-previous") %>
+<%= unless Enum.empty?(@entries.list) do %>
+  <table class="table is-bordered is-hoverable">
+  <tr>
+    <%= for {key, _value} <- Map.from_struct(Enum.at(@entries.list, 0)) do %>
+       <th><%= unless key in [:__struct__, :__meta__], do: key %></th>
+    <% end %>
+  </tr>
+  <%= for data <- @entries.list do %>
+      <tr>
+      <%= for {key, value} <- Map.from_struct(data) do %>
+        <td><%= unless key in [:__struct__, :__meta__], do: value %></td>
+      <% end %>
+      </tr>
+  <% end %>
+  </table>
+  <%= pagination_text(@entries) %><br>
+  <%= pagination_links(@conn, @entries, &DbInfo.DbInfo.get_router_helpers.db_info_path/4, @shema) %>
+<% end %>
